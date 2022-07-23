@@ -1,14 +1,13 @@
-from tkinter import Widget
 import PySimpleGUI as sg
 import random
 import pyperclip
 import datetime
 from Steper_class import Steper
 """
-    TODO 急需解决把按钮点击可回车
-        bind_return_key
-        https://github.com/PySimpleGUI/PySimpleGUI/issues/2176
+    TODO 加载时选中最大值文本
     TODO 把文件导入导出功能做出来
+    TODO 优化界面
+    TODO 代码优化
 """
 
 sg.theme('Topanga')   # Add a touch of color
@@ -26,10 +25,7 @@ layout = [[minInputText, sg.Button('生成', k="generate", bind_return_key=True)
           [randomText, sg.Button('复制', k="copy")],
           [pathText],
           [sg.Button('置步', k="restep"),sg.Button('__dict__', k="print_dict")],
-          [timeText],
-          [sg.Tree(data=treedata,
-                   headings=[])
-           ]]
+          [timeText]]
 
 # Create the Window
 window = sg.Window('Window Title', layout)
