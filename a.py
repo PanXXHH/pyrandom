@@ -19,12 +19,12 @@ timeText = sg.Text('2022年5月27日 000000')
 stepText = sg.Text('1')
 treedata = sg.TreeData()
 pathText = sg.Text(Asteper.getCurrentPath())
-minInputText = sg.InputText("1")
-maxInputText = sg.InputText("1",focus=True)
-layout = [[minInputText, sg.Button('生成', k="generate", bind_return_key=True), maxInputText],
+minInputText = sg.InputText("1",size=10)
+maxInputText = sg.InputText("1",size=10, focus=True)
+layout = [[minInputText, sg.Button('生成',size=5, k="generate", bind_return_key=True), sg.Button('置步', k="restep"), maxInputText],
           [randomText, sg.Button('复制', k="copy")],
           [pathText],
-          [sg.Button('置步', k="restep"),sg.Button('__dict__', k="print_dict")],
+          [sg.Button('__dict__', k="print_dict")],
           [timeText]]
 
 # Create the Window
@@ -42,7 +42,7 @@ while True:
         if Asteper.length() > 0:
             maxInputText.Update(Asteper.length() - int(values[0]) + 1)
         maxInputText.SetFocus()
-        maxInputText.Widget.select_range(0,len(values[1]))
+        maxInputText.Widget.select_range(0, len(values[1]))
     elif event == 'copy':
         pyperclip.copy(randomText.get())
     elif event == 'restep':
