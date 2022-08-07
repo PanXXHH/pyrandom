@@ -5,7 +5,7 @@ import datetime
 from Steper_class import Steper
 """
     DONE 加载时选中最大值文本
-    TODO 把文件导入导出功能做出来
+    TODO 把文件导入导出功能做出来，已实现框架功能，还差逻辑代码
     TODO 优化界面
     TODO 代码优化
     TODO 复制按钮删掉，文本居中
@@ -25,8 +25,12 @@ maxInputText = sg.InputText("1", size=10, focus=True)
 layout = [[minInputText, sg.Button('生成', size=5, k="generate", bind_return_key=True), sg.Button('置步', k="restep"), maxInputText],
           [randomText],
           [mapText],
-          [sg.Button('__dict__', k="print_dict"), sg.FileBrowse('导入', file_types=(("JSON file", "*.json"), ('All file', '*.*')), initial_folder=getcwd(), k="import"),
-           sg.FileSaveAs('导出', file_types=(("JSON file", "*.json"), ('All file', '*.*')), initial_folder=getcwd(), k="export", target="port_path")],
+          [sg.Button('__dict__', k="print_dict"),
+           sg.FileBrowse('导入', file_types=(("JSON file", "*.json"), ('All file', '*.*')),
+                         initial_folder=getcwd(), k="import", target="import", enable_events=True),
+           sg.FileSaveAs('导出', file_types=(("JSON file", "*.json"), ('All file', '*.*')),
+                         initial_folder=getcwd(), k="export", target="export", enable_events=True),
+           ],
           [timeText]]
 
 # Create the Window
@@ -53,12 +57,11 @@ while True:
     elif event == 'print_dict':
         print(Asteper.__dict__())
     elif event == 'import':
-        pass
+        print(456)
     elif event == 'export':
-        print("explorer")
+        print(123)
     elif event == sg.WIN_CLOSED or event == 'Cancel':
         break
-
     print(event, values)
 
 window.close()
